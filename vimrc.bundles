@@ -227,7 +227,7 @@ if count(g:bundle_groups, 'javascript')
     " for javascript 自动补全, 配合YCM, 需要安装全局环境的（非nvm中) node.js&npm
     " 安装完成后还需要在 bundle/tern_for_vim 下执行 npm install 安装依赖 `cd ~/.vim/bundle/tern_for_vim && npm install`
     " see https://github.com/marijnh/tern_for_vim
-    " Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
+    Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
 endif
 
 
@@ -256,7 +256,7 @@ endif
 
 if count(g:bundle_groups, 'less')
     " ###### vim.less : less 自动更新##########
-    Plug 'groenewege/vim-less'
+    " Plug 'groenewege/vim-less'
     " autocmd BufWritePost *.less :!lessc % > %:p:r.css
 endif
 
@@ -286,10 +286,16 @@ if count(g:bundle_groups, 'beta')
 
 endif
 
+Plug 'Yggdroot/indentLine'
+
 
 " Add plugins to &runtimepath
 call plug#end()
 
+
+" indentLine
+let g:indentLine_char='┆'
+let g:indentLine_enabled = 1
 
 " ################### 基础 ######################
 
@@ -432,7 +438,13 @@ endif
     " 回车作为选中
     let g:ycm_key_list_stop_completion = ['<CR>']
 
+    let g:ycm_python_binary_path = '/usr/bin/python3'
+    let g:ycm_server_python_interpreter = '/usr/bin/python3'
+
+
     "let g:ycm_seed_identifiers_with_syntax=1   "语言关键字补全, 不过python关键字都很短，所以，需要的自己打开
+    " python code format
+    " format all file
 
     " 跳转到定义处, 分屏打开
     let g:ycm_goto_buffer_command = 'horizontal-split'
@@ -677,7 +689,7 @@ endif
     let g:airline_symbols.linenr = '¶'
     let g:airline_symbols.branch = '⎇'
     " 是否打开tabline
-    " let g:airline#extensions#tabline#enabled = 1
+    let g:airline#extensions#tabline#enabled = 1
 " }}}
 
 
@@ -821,6 +833,9 @@ endif
     \   "_" : {
     \       "outputter" : "message",
     \   },
+    \   "html" : {
+    \       "exec": ["google-chrome %s:p:r.html"]
+    \   }
     \}
 
     let g:quickrun_no_default_key_mappings = 1

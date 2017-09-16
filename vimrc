@@ -92,7 +92,7 @@ set noswapfile
 set wildignore=*.swp,*.bak,*.pyc,*.class,.svn
 
 " 突出显示当前列
-set cursorcolumn
+" set cursorcolumn
 " 突出显示当前行
 set cursorline
 
@@ -107,7 +107,7 @@ set mouse-=a
 " 启用鼠标
 " set mouse=a
 " Hide the mouse cursor while typing
-" set mousehide
+set mousehide
 
 
 " 修复ctrl+m 多光标操作选择的bug，但是改变了ctrl+v进行字符选中时将包含光标下的字符
@@ -187,7 +187,9 @@ set foldmethod=indent
 set foldlevel=99
 " 代码折叠自定义快捷键 <leader>zz
 let g:FoldMethod = 0
-map <leader>zz :call ToggleFold()<cr>
+" map <leader>zz :call ToggleFold()<cr>
+" map <space> :call ToggleFold()<cr>
+nnoremap <space> za
 fun! ToggleFold()
     if g:FoldMethod == 0
         exe "normal! zM"
@@ -426,7 +428,7 @@ cnoremap <C-e> <End>
 
 " 搜索相关
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-map <space> /
+" map <space> /
 " 进入搜索Use sane regexes"
 nnoremap / /\v
 vnoremap / /\v
@@ -561,9 +563,9 @@ nnoremap U <C-r>
 " nmap <silent> <leader>ev :e $MYVIMRC<CR>
 " nmap <silent> <leader>sv :so $MYVIMRC<CR>
 " edit vimrc/zshrc and load vimrc bindings
-nnoremap <leader>ev :vsp $MYVIMRC<CR>
-nnoremap <leader>ez :vsp ~/.zshrc<CR>
-nnoremap <leader>sv :source $MYVIMRC<CR>
+" nnoremap <leader>ev :vsp $MYVIMRC<CR>
+" nnoremap <leader>ez :vsp ~/.zshrc<CR>
+" nnoremap <leader>sv :source $MYVIMRC<CR>
 
 "==========================================
 " FileType Settings  文件类型设置
@@ -657,8 +659,8 @@ endif
 set background=dark
 set t_Co=256
 
-colorscheme solarized
-" colorscheme molokai
+" colorscheme solarized
+colorscheme molokai
 
 
 " 设置标记一列的背景颜色和数字一行颜色一致
@@ -675,3 +677,7 @@ highlight clear SpellRare
 highlight SpellRare term=underline cterm=underline
 highlight clear SpellLocal
 highlight SpellLocal term=underline cterm=underline
+
+
+nnoremap <leader>cd :cd %:p:h<CR>
+" set lines=35 columns=120
